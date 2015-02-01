@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Interets.Properties {
+namespace Interets.New.Old.Properties {
     using System;
     
     

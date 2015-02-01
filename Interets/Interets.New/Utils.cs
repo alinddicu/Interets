@@ -7,7 +7,7 @@ using System.Data;
 using System.Globalization;
 using System.IO;
 
-namespace Interets
+namespace Interets.New
 {
     public class Utils
     {

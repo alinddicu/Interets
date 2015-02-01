@@ -1,4 +1,4 @@
-﻿namespace Interets
+﻿namespace Interets.New
 {
     partial class Interets
     {
