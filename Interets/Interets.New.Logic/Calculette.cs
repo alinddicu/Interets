@@ -1,6 +1,7 @@
 ﻿namespace Interets.New.Logic
 {
     using System;
+    using logic;
 
     public class Calculette
     {
@@ -34,12 +35,10 @@
 
         private double GetGainBrut()
         {
-            // Vn = p*(1+i/12)puissance(N*12)-1)/i
-            // p = primeMensuelle
-            // N = nombre d'années
-            // i = intérêts mensuels
-            var i = _interetsMoyensNetsAnnuels / 100 / 12;
-            return _primeMensuelle * (Math.Pow((1 + i), _anneesContrat * 12) - 1) / i;
+            return FormuleGain.Calculer(
+                _interetsMoyensNetsAnnuels,
+                _primeMensuelle, 
+                _anneesContrat);
         }
     }
 }
