@@ -5,8 +5,9 @@ using System.Data;
 using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
+using Interets.Old;
 
-namespace Interets.New
+namespace Interets.Old
 {
     public partial class Interets : Form
     {
@@ -79,7 +80,7 @@ namespace Interets.New
 
             this.textBoxCumulSurPeriode.Text = cumulSurPeriode.ToString("#.##");
             this.textBoxGain.Text = Calcul.CalculerGain(cumulSurPeriode, fraisDebut).ToString("#.##");
-            this.textBoxCotisationRecalc.Text = Calcul.CotisationRecalc(cotisationMensuelle, cumulSurPeriode, periodeDeCalcul).ToString("#.##");
+            this.textBoxCotisationRecalc.Text = Calcul.CotisationRecalc(cotisationMensuelle, cumulSurPeriode).ToString("#.##");
             this.textBoxRendementGlobal.Text = Calcul.RendementFinal(fraisDebut, cotisationMensuelle, cumulSurPeriode, periodeDeCalcul).ToString("#.##");
             this.textBoxRendAnnuelGlob.Text = Calcul.RendementAnnuelFinal(fraisDebut, cotisationMensuelle, cumulSurPeriode, periodeDeCalcul).ToString("#.##");
         }

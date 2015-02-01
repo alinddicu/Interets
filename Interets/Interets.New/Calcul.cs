@@ -29,12 +29,7 @@ namespace Interets.New
             return cumulSurPeriode - fraisDebut;
         }
 
-        public static double CotisationRecalc
-            (
-            double cotisationMensuelle,
-            double cumulSurPeriode,
-            int periodeDeCalcul
-            )
+        public static double CotisationRecalc(double cumulSurPeriode, int periodeDeCalcul)
         {
             return cumulSurPeriode / (12 * periodeDeCalcul);
         }
@@ -69,7 +64,7 @@ namespace Interets.New
             )
         {
             double i = tauxAnnuel / 100 / 12;
-            return Math.Log((i+fraisDebut)/cotisationMensuelle+1)/Math.Log(1+i);
+            return Math.Log((i + fraisDebut) / cotisationMensuelle + 1) / Math.Log(1 + i);
         }
     }
 }

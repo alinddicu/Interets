@@ -2,6 +2,8 @@
 {
     partial class Interets
     {
+        private const string DEFAULT_FONT = "Verdana";
+
         /// <summary>
         /// Variable nécessaire au concepteur.
         /// </summary>

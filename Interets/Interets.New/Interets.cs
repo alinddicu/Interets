@@ -1,38 +1,34 @@
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Text;
-using System.Windows.Forms;
-
 namespace Interets.New
 {
+    using System.Globalization;
+    using System;
+    using System.Drawing;
+    using System.Windows.Forms;
+
     public partial class Interets : Form
     {
-        private const string DEFAULT_FONT = "Verdana";
-        private System.Drawing.Graphics g;
-        private System.Drawing.Pen styloBleu = new System.Drawing.Pen(Color.Blue, 2F);
-        private System.Drawing.Pen styloNoir = new System.Drawing.Pen(Color.Black, 2F);
-        private System.Drawing.Pen styloX = new System.Drawing.Pen(Color.Green, 2F);
-        private System.Drawing.Pen styloY = new System.Drawing.Pen(Color.Red, 2F);
-        private System.Drawing.Pen styloFrais = new System.Drawing.Pen(Color.White, 2F);
+        private Graphics g;
+        private readonly Pen _styloX = new Pen(Color.Green, 2F);
+        private readonly Pen _styloY = new Pen(Color.Red, 2F);
+        private readonly Pen _styloFrais = new Pen(Color.White, 2F);
 
-        private double fraisDebut;
-        private double cotisationMensuelle;
-        private double tauxAnnuel;
-        private int periodeDeCalcul;
-        private double cumulSurPeriode;
+        private double _fraisDebut;
+        private double _cotisationMensuelle;
+        private double _tauxAnnuel;
+        private int _periodeDeCalcul;
+        private double _cumulSurPeriode;
 
 
-        private int decalageTraitGrad = 2;
-        private int maxX = 0;
-        private int maxY = 0;
-        private int margeX = 10;
-        private int margeY = 11;
+        private const int DecalageTraitGrad = 2;
+        private int _maxX;
+        private int _maxY;
+        private const int MargeX = 10;
+        private const int MargeY = 11;
 
         public Interets()
         {
+            StyloBleu = new Pen(Color.Blue, 2F);
+            StyloNoir = new Pen(Color.Black, 2F);
             InitializeComponent();
             InitVariables();
             Calculer();
@@ -41,16 +37,20 @@ namespace Interets.New
             GraduerX();
         }
 
+        private Pen StyloBleu { set;  get; }
+
+        private Pen StyloNoir { set;  get; }
+
         private void InitVariables()
         {
-            maxX = this.pictureBoxEvolTemps.Width;
-            maxY = this.pictureBoxEvolTemps.Height;
-            this.g = pictureBoxEvolTemps.CreateGraphics();
+            _maxX = pictureBoxEvolTemps.Width;
+            _maxY = pictureBoxEvolTemps.Height;
+            g = pictureBoxEvolTemps.CreateGraphics();
         }
 
         private void Interets_Load(object sender, EventArgs e)
         {
-            Utils.CentrerForm(this);
+            CentrerForm(this);
         }
 
         private void buttonCalculer_Click(object sender, EventArgs e)
@@ -71,44 +71,44 @@ namespace Interets.New
 
         private void Calculer()
         {
-            this.fraisDebut = Convert.ToDouble(this.textBoxFraisInit.Text);
-            this.cotisationMensuelle = Convert.ToDouble(this.textBoxCotisation.Text);
-            this.tauxAnnuel = Convert.ToDouble(this.textBoxTauxAnnuel.Text);
-            this.periodeDeCalcul = Convert.ToInt32(this.textBoxPeriodeCalcul.Text);
-            this.cumulSurPeriode = Calcul.CalculerCumulSurPeriode(cotisationMensuelle, tauxAnnuel, periodeDeCalcul);
+            _fraisDebut = Convert.ToDouble(textBoxFraisInit.Text);
+            _cotisationMensuelle = Convert.ToDouble(textBoxCotisation.Text);
+            _tauxAnnuel = Convert.ToDouble(textBoxTauxAnnuel.Text);
+            _periodeDeCalcul = Convert.ToInt32(textBoxPeriodeCalcul.Text);
+            _cumulSurPeriode = Calcul.CalculerCumulSurPeriode(_cotisationMensuelle, _tauxAnnuel, _periodeDeCalcul);
 
-            this.textBoxCumulSurPeriode.Text = cumulSurPeriode.ToString("#.##");
-            this.textBoxGain.Text = Calcul.CalculerGain(cumulSurPeriode, fraisDebut).ToString("#.##");
-            this.textBoxCotisationRecalc.Text = Calcul.CotisationRecalc(cotisationMensuelle, cumulSurPeriode, periodeDeCalcul).ToString("#.##");
-            this.textBoxRendementGlobal.Text = Calcul.RendementFinal(fraisDebut, cotisationMensuelle, cumulSurPeriode, periodeDeCalcul).ToString("#.##");
-            this.textBoxRendAnnuelGlob.Text = Calcul.RendementAnnuelFinal(fraisDebut, cotisationMensuelle, cumulSurPeriode, periodeDeCalcul).ToString("#.##");
+            textBoxCumulSurPeriode.Text = _cumulSurPeriode.ToString("#.##");
+            textBoxGain.Text = Calcul.CalculerGain(_cumulSurPeriode, _fraisDebut).ToString("#.##");
+            textBoxCotisationRecalc.Text = Calcul.CotisationRecalc(_cumulSurPeriode, _periodeDeCalcul).ToString("#.##");
+            textBoxRendementGlobal.Text = Calcul.RendementFinal(_fraisDebut, _cotisationMensuelle, _cumulSurPeriode, _periodeDeCalcul).ToString("#.##");
+            textBoxRendAnnuelGlob.Text = Calcul.RendementAnnuelFinal(_fraisDebut, _cotisationMensuelle, _cumulSurPeriode, _periodeDeCalcul).ToString("#.##");
         }
 
         private void InitAxeEvolTemps()
         {
-            System.Drawing.Point[] ys = new System.Drawing.Point[2];
-            ys[0].X = margeX;
+            var ys = new Point[2];
+            ys[0].X = MargeX;
             ys[0].Y = 0;
-            ys[1].X = margeX;
-            ys[1].Y = maxY;
+            ys[1].X = MargeX;
+            ys[1].Y = _maxY;
             TranslaterTabPoints(ref ys);
-            this.g.DrawLine(styloX, ys[0], ys[1]);
+            g.DrawLine(_styloX, ys[0], ys[1]);
 
-            System.Drawing.Point[] xs = new System.Drawing.Point[2];
+            var xs = new Point[2];
             xs[0].X = 0;
-            xs[0].Y = margeY;
-            xs[1].X = maxX;
-            xs[1].Y = margeY;
+            xs[0].Y = MargeY;
+            xs[1].X = _maxX;
+            xs[1].Y = MargeY;
             TranslaterTabPoints(ref xs);
-            this.g.DrawLine(styloY, xs[0], xs[1]);
+            g.DrawLine(_styloY, xs[0], xs[1]);
         }
 
-        private void TranslaterPoint(ref System.Drawing.Point p)
+        private void TranslaterPoint(ref Point p)
         {
-            p.Y = this.maxY - p.Y;
+            p.Y = _maxY - p.Y;
         }
 
-        private void TranslaterTabPoints(ref System.Drawing.Point[] points)
+        private void TranslaterTabPoints(ref Point[] points)
         {
             for (int i = 0; i < points.Length; i++)
             {
@@ -118,73 +118,80 @@ namespace Interets.New
 
         private void GraduerX()
         {
-            int nombrePoints = this.periodeDeCalcul + 1;
-            System.Drawing.Point[] points1 = new System.Drawing.Point[nombrePoints];
-            System.Drawing.Point[] points2 = new System.Drawing.Point[nombrePoints];
+            var nombrePoints = _periodeDeCalcul + 1;
+            var points1 = new Point[nombrePoints];
+            var points2 = new Point[nombrePoints];
 
-            for (int i = 0; i < nombrePoints; i++)
+            for (var i = 0; i < nombrePoints; i++)
             {
-                points1[i] = new Point(margeX + (maxX - margeX) * i / nombrePoints, margeY - decalageTraitGrad);
-                points2[i] = new Point(margeX + (maxX - margeX) * i / nombrePoints, margeY + decalageTraitGrad);
+                points1[i] = new Point(MargeX + (_maxX - MargeX) * i / nombrePoints, MargeY - DecalageTraitGrad);
+                points2[i] = new Point(MargeX + (_maxX - MargeX) * i / nombrePoints, MargeY + DecalageTraitGrad);
             }
 
             TranslaterTabPoints(ref points1);
             TranslaterTabPoints(ref points2);
-            for (int i = 0; i < nombrePoints; i++)
+            for (var i = 0; i < nombrePoints; i++)
             {
-                this.g.DrawLine(styloY, points1[i], points2[i]);
+                g.DrawLine(_styloY, points1[i], points2[i]);
                 if (i > 0)
                 {
-                    this.g.DrawString(i.ToString(), new Font(DEFAULT_FONT, 8), new System.Drawing.SolidBrush(System.Drawing.Color.Red), points2[i].X - 5, points2[i].Y + 2);
+                    g.DrawString(i.ToString(CultureInfo.InvariantCulture), new Font(DEFAULT_FONT, 8), new SolidBrush(Color.Red), points2[i].X - 5, points2[i].Y + 2);
                 }
             }
         }
 
-        private int DenominateurAxeX()
+        private static int DenominateurAxeX()
         {
             return 10000;
         }
 
         private void GraduerY()
         {
-            int nombrePoints = (int)Math.Ceiling(this.cumulSurPeriode / (double)DenominateurAxeX());
+            var nombrePoints = (int)Math.Ceiling(_cumulSurPeriode / DenominateurAxeX());
             nombrePoints++;
-            System.Drawing.Point[] points1 = new System.Drawing.Point[nombrePoints];
-            System.Drawing.Point[] points2 = new System.Drawing.Point[nombrePoints];
+            var points1 = new Point[nombrePoints];
+            var points2 = new Point[nombrePoints];
 
-            for (int i = 0; i < nombrePoints; i++)
+            for (var i = 0; i < nombrePoints; i++)
             {
-                points1[i] = new Point(margeX - decalageTraitGrad, margeY + (maxY - margeY) * i / nombrePoints);
-                points2[i] = new Point(margeX + decalageTraitGrad, margeY + (maxY - margeY) * i / nombrePoints);
+                points1[i] = new Point(MargeX - DecalageTraitGrad, MargeY + (_maxY - MargeY) * i / nombrePoints);
+                points2[i] = new Point(MargeX + DecalageTraitGrad, MargeY + (_maxY - MargeY) * i / nombrePoints);
             }
 
             TranslaterTabPoints(ref points1);
             TranslaterTabPoints(ref points2);
             for (int i = 0; i < nombrePoints; i++)
             {
-                this.g.DrawLine(styloX, points1[i], points2[i]);
+                g.DrawLine(_styloX, points1[i], points2[i]);
                 if (i > 0)
                 {
-                    this.g.DrawString(i.ToString(), new Font(DEFAULT_FONT, 8), new System.Drawing.SolidBrush(System.Drawing.Color.Green), points2[i].X - 13, points2[i].Y - 5);
+                    g.DrawString(i.ToString(CultureInfo.InvariantCulture), new Font(DEFAULT_FONT, 8), new SolidBrush(Color.Green), points2[i].X - 13, points2[i].Y - 5);
                 }
             }
         }
 
         private void Legende()
         {
-            this.g.DrawString("ans", new Font(DEFAULT_FONT, 10), new System.Drawing.SolidBrush(System.Drawing.Color.Red), maxX - 3 * margeX, maxY - 3 * margeY);
-            this.g.DrawString("€", new Font(DEFAULT_FONT, 10), new System.Drawing.SolidBrush(System.Drawing.Color.Green), 2 * margeX, margeY);
+            g.DrawString("ans", new Font(DEFAULT_FONT, 10), new SolidBrush(Color.Red), _maxX - 3 * MargeX, _maxY - 3 * MargeY);
+            g.DrawString("€", new Font(DEFAULT_FONT, 10), new SolidBrush(Color.Green), 2 * MargeX, MargeY);
         }
 
         private void TracerFrais()
         {
-            System.Drawing.Point[] traceFrais = new System.Drawing.Point[2];
-            traceFrais[0].X = margeX;
-            traceFrais[0].Y = (int)((fraisDebut / cumulSurPeriode) * (maxY - margeY));
-            traceFrais[1].X = maxX - margeX;
+            var traceFrais = new Point[2];
+            traceFrais[0].X = MargeX;
+            traceFrais[0].Y = (int)((_fraisDebut / _cumulSurPeriode) * (_maxY - MargeY));
+            traceFrais[1].X = _maxX - MargeX;
             traceFrais[1].Y = traceFrais[0].Y;
             TranslaterTabPoints(ref traceFrais);
-            this.g.DrawLine(styloFrais, traceFrais[0], traceFrais[1]);
+            g.DrawLine(_styloFrais, traceFrais[0], traceFrais[1]);
+        }
+
+        private static void CentrerForm(Form form)
+        {
+            form.Location = new Point(
+            Screen.PrimaryScreen.Bounds.Width / 2 - form.Width / 2,
+            Screen.PrimaryScreen.Bounds.Height / 2 - form.Height / 2);
         }
     }
 }

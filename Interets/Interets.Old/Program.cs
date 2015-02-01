@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Windows.Forms;
 
-namespace Interets.New
+namespace Interets.Old
 {
     static class Program
     {

@@ -1,4 +1,4 @@
-using System;
+ï»¿using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Windows.Forms;
@@ -7,7 +7,7 @@ using System.Data;
 using System.Globalization;
 using System.IO;
 
-namespace Interets.New
+namespace Interets.Old
 {
     public class Utils
     {
@@ -216,7 +216,7 @@ namespace Interets.New
 
         public static string FormatterMsgNonInsert(string causeErr, string[] ligne)
         {
-            return "Ligne non insérée à cause de " + causeErr + " pour la ligne '" + string.Join(SEPARATEUR_POINT_VIRGULE, ligne) + "'";
+            return "Ligne non insÃ©rÃ©e Ã  cause de " + causeErr + " pour la ligne '" + string.Join(SEPARATEUR_POINT_VIRGULE, ligne) + "'";
         }
     }
 }
