@@ -61,9 +61,9 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Interets.New\Interets.New.csproj">
-      <Project>{fdbe8edd-52d1-463f-b3d4-d2578d34e1a7}</Project>
-      <Name>Interets.New</Name>
+    <ProjectReference Include="..\Interets.New.logic\Interets.New.logic.csproj">
+      <Project>{ae479fa8-549b-4ce7-be5d-3f2de2cb333b}</Project>
+      <Name>Interets.New.logic</Name>
     </ProjectReference>
   </ItemGroup>
   <Choose>

@@ -1,4 +1,4 @@
-﻿namespace Interets.New
+﻿namespace Interets.New.Logic
 {
     public class ResultatCalcul
     {
