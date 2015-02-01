@@ -7,7 +7,7 @@ namespace Interets.New
     {
         // http://www.ecogesam.ac-aix-marseille.fr/Resped/Gestion/mathfi/mathfin1.html
 
-        // Vn = a(1+i/12)puissance(N*12)-1)/i
+        // Vn = a*(1+i/12)puissance(N*12)-1)/i
         // a = annuité
         public static double CalculerCumulSurPeriode(
             double annuite,

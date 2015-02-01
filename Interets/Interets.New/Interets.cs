@@ -7,7 +7,7 @@ namespace Interets.New
 
     public partial class Interets : Form
     {
-        private Graphics g;
+        private Graphics _graphics;
         private readonly Pen _styloX = new Pen(Color.Green, 2F);
         private readonly Pen _styloY = new Pen(Color.Red, 2F);
         private readonly Pen _styloFrais = new Pen(Color.White, 2F);
@@ -17,7 +17,6 @@ namespace Interets.New
         private double _tauxAnnuel;
         private int _periodeDeCalcul;
         private double _cumulSurPeriode;
-
 
         private const int DecalageTraitGrad = 2;
         private int _maxX;
@@ -45,7 +44,7 @@ namespace Interets.New
         {
             _maxX = pictureBoxEvolTemps.Width;
             _maxY = pictureBoxEvolTemps.Height;
-            g = pictureBoxEvolTemps.CreateGraphics();
+            _graphics = pictureBoxEvolTemps.CreateGraphics();
         }
 
         private void Interets_Load(object sender, EventArgs e)
@@ -92,7 +91,7 @@ namespace Interets.New
             ys[1].X = MargeX;
             ys[1].Y = _maxY;
             TranslaterTabPoints(ref ys);
-            g.DrawLine(_styloX, ys[0], ys[1]);
+            _graphics.DrawLine(_styloX, ys[0], ys[1]);
 
             var xs = new Point[2];
             xs[0].X = 0;
@@ -100,7 +99,7 @@ namespace Interets.New
             xs[1].X = _maxX;
             xs[1].Y = MargeY;
             TranslaterTabPoints(ref xs);
-            g.DrawLine(_styloY, xs[0], xs[1]);
+            _graphics.DrawLine(_styloY, xs[0], xs[1]);
         }
 
         private void TranslaterPoint(ref Point p)
@@ -110,7 +109,7 @@ namespace Interets.New
 
         private void TranslaterTabPoints(ref Point[] points)
         {
-            for (int i = 0; i < points.Length; i++)
+            for (var i = 0; i < points.Length; i++)
             {
                 TranslaterPoint(ref points[i]);
             }
@@ -132,10 +131,10 @@ namespace Interets.New
             TranslaterTabPoints(ref points2);
             for (var i = 0; i < nombrePoints; i++)
             {
-                g.DrawLine(_styloY, points1[i], points2[i]);
+                _graphics.DrawLine(_styloY, points1[i], points2[i]);
                 if (i > 0)
                 {
-                    g.DrawString(i.ToString(CultureInfo.InvariantCulture), new Font(DEFAULT_FONT, 8), new SolidBrush(Color.Red), points2[i].X - 5, points2[i].Y + 2);
+                    _graphics.DrawString(i.ToString(CultureInfo.InvariantCulture), new Font(DEFAULT_FONT, 8), new SolidBrush(Color.Red), points2[i].X - 5, points2[i].Y + 2);
                 }
             }
         }
@@ -160,20 +159,20 @@ namespace Interets.New
 
             TranslaterTabPoints(ref points1);
             TranslaterTabPoints(ref points2);
-            for (int i = 0; i < nombrePoints; i++)
+            for (var i = 0; i < nombrePoints; i++)
             {
-                g.DrawLine(_styloX, points1[i], points2[i]);
+                _graphics.DrawLine(_styloX, points1[i], points2[i]);
                 if (i > 0)
                 {
-                    g.DrawString(i.ToString(CultureInfo.InvariantCulture), new Font(DEFAULT_FONT, 8), new SolidBrush(Color.Green), points2[i].X - 13, points2[i].Y - 5);
+                    _graphics.DrawString(i.ToString(CultureInfo.InvariantCulture), new Font(DEFAULT_FONT, 8), new SolidBrush(Color.Green), points2[i].X - 13, points2[i].Y - 5);
                 }
             }
         }
 
         private void Legende()
         {
-            g.DrawString("ans", new Font(DEFAULT_FONT, 10), new SolidBrush(Color.Red), _maxX - 3 * MargeX, _maxY - 3 * MargeY);
-            g.DrawString("€", new Font(DEFAULT_FONT, 10), new SolidBrush(Color.Green), 2 * MargeX, MargeY);
+            _graphics.DrawString("ans", new Font(DEFAULT_FONT, 10), new SolidBrush(Color.Red), _maxX - 3 * MargeX, _maxY - 3 * MargeY);
+            _graphics.DrawString("€", new Font(DEFAULT_FONT, 10), new SolidBrush(Color.Green), 2 * MargeX, MargeY);
         }
 
         private void TracerFrais()
@@ -184,7 +183,7 @@ namespace Interets.New
             traceFrais[1].X = _maxX - MargeX;
             traceFrais[1].Y = traceFrais[0].Y;
             TranslaterTabPoints(ref traceFrais);
-            g.DrawLine(_styloFrais, traceFrais[0], traceFrais[1]);
+            _graphics.DrawLine(_styloFrais, traceFrais[0], traceFrais[1]);
         }
 
         private static void CentrerForm(Form form)
