@@ -8,7 +8,7 @@
     <ProjectGuid>{EEF1CBA1-17AB-4AD0-B786-A9AB1ACE774B}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Interets</RootNamespace>
+    <RootNamespace>Interets.Old</RootNamespace>
     <AssemblyName>Interets.New</AssemblyName>
     <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
     <FileUpgradeFlags>

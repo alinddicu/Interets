@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Interets.New.Old.Properties {
+namespace Interets.Old.Properties {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
