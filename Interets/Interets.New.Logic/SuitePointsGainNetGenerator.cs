@@ -2,7 +2,7 @@
 {
     using System.Collections.Generic;
 
-    public class SuitePointsGainNet
+    public class SuitePointsGainNetGenerator
     {
         public IEnumerable<PointDonnees> Generate(
             double interetsMoyensNetsAnnuels,

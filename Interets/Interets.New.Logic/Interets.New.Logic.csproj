@@ -6,7 +6,7 @@
     <ProjectGuid>{AE479FA8-549B-4CE7-BE5D-3F2DE2CB333B}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Interets.New.logic</RootNamespace>
+    <RootNamespace>Interets.New.Logic</RootNamespace>
     <AssemblyName>Interets.New.logic</AssemblyName>
     <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
@@ -58,8 +58,8 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ResultatCalcul.cs" />
     <Compile Include="SuitePointsCotisation.cs" />
-    <Compile Include="SuitePointsGainNet.cs" />
-    <Compile Include="SuitePointsGraphiques.cs" />
+    <Compile Include="SuitePointsGainNetGenerator.cs" />
+    <Compile Include="SuitePointsGraphiquesConvertor.cs" />
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">

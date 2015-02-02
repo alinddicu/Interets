@@ -2,13 +2,14 @@
 {
     public struct PointDonnees
     {
-        private double _x;
-        private double _y;
+        public double X { get; private set; }
+        public double Y { get; private set; }
 
         public PointDonnees(double x, double y)
+            : this()
         {
-            _x = x;
-            _y = y;
+            X = x;
+            Y = y;
         }
     }
 }

@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Interets.New.Logic.Test", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Interets.New.Logic", "Interets.New.Logic\Interets.New.Logic.csproj", "{AE479FA8-549B-4CE7-BE5D-3F2DE2CB333B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Interets.New.Chart", "Interets.New.Chart\Interets.New.Chart.csproj", "{30CC99A9-82CC-47F5-B01B-112300F4E1D8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -35,6 +37,10 @@ Global
 		{AE479FA8-549B-4CE7-BE5D-3F2DE2CB333B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AE479FA8-549B-4CE7-BE5D-3F2DE2CB333B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AE479FA8-549B-4CE7-BE5D-3F2DE2CB333B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{30CC99A9-82CC-47F5-B01B-112300F4E1D8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{30CC99A9-82CC-47F5-B01B-112300F4E1D8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{30CC99A9-82CC-47F5-B01B-112300F4E1D8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{30CC99A9-82CC-47F5-B01B-112300F4E1D8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
