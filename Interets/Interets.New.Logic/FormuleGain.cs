@@ -2,12 +2,9 @@
 {
     using System;
 
-    public static class FormuleGain
+    public class FormuleGain
     {
-        public static double Calculer(
-            double interetsMoyensNetsAnnuels,
-            double primeMensuelle,
-            double anneesContrat)
+        public double Calculer(double interetsMoyensNetsAnnuels, double primeMensuelle, double anneesContrat)
         {
             // Vn = p*(1+i/12)puissance(N*12)-1)/i
 

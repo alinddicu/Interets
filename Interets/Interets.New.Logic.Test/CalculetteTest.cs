@@ -2,6 +2,7 @@
 {
     using System;
     using Logic;
+    using logic;
     using Microsoft.VisualStudio.TestTools.UnitTesting;
     using NFluent;
 
@@ -13,7 +14,7 @@
         [TestMethod]
         public void WhenTauxIs3AndNoFraisThenResultsAreCorrect()
         {
-            _calculette = new Calculette(3, 100, 1, 0);
+            _calculette = new Calculette(new FormuleGain(), 3, 100, 1, 0);
 
             var result = _calculette.Calculer();
 
@@ -24,7 +25,7 @@
         [TestMethod]
         public void WhenTauxIs3AndFraisIs5ThenResultsAreCorrect()
         {
-            _calculette = new Calculette(3, 100, 1, 5);
+            _calculette = new Calculette(new FormuleGain(), 3, 100, 1, 5);
 
             var result = _calculette.Calculer();
 

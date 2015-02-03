@@ -20,7 +20,7 @@
 
         private void FillChart()
         {
-            var gainNetData = new SuitePointsGainNetGenerator().Generate(3, 100, 16).ToArray();
+            var gainNetData = new SuitePointsGainNetGenerator(new FormuleGain()).Generate(3, 100, 16).ToArray();
             var cotisationData = new SuitePointsCotisation().Generate(100, 16).ToArray();
             var maxY = new[] { gainNetData.Max(d => d.Y), cotisationData.Max(d => d.Y) }.Max(d => d);
             var graphiquesGenerator = new SuitePointsGraphiquesConvertor(pictureBox1.Width, pictureBox1.Height, maxY);

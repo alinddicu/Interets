@@ -1,6 +1,5 @@
 ﻿namespace Interets.New.Logic
 {
-    using System;
     using logic;
 
     public class Calculette
@@ -10,8 +9,11 @@
         private readonly double _fraisGlobaux;
         private readonly double _anneesContrat;
 
-        public Calculette(double interetsMoyensNetsAnnuels, double primeMensuelle, int anneesContrat, double fraisGlobaux)
+        private readonly FormuleGain _formuleGain;
+
+        public Calculette(FormuleGain formuleGain, double interetsMoyensNetsAnnuels, double primeMensuelle, int anneesContrat, double fraisGlobaux)
         {
+            _formuleGain = formuleGain;
             _interetsMoyensNetsAnnuels = interetsMoyensNetsAnnuels;
             _primeMensuelle = primeMensuelle;
             _anneesContrat = anneesContrat;
@@ -29,16 +31,13 @@
 
         private double GetRendemmentGlobal(double gainNet)
         {
-            var cotisation = _primeMensuelle*_anneesContrat*12;
+            var cotisation = _primeMensuelle * _anneesContrat * 12;
             return gainNet / cotisation;
         }
 
         private double GetGainBrut()
         {
-            return FormuleGain.Calculer(
-                _interetsMoyensNetsAnnuels,
-                _primeMensuelle, 
-                _anneesContrat);
+            return _formuleGain.Calculer(_interetsMoyensNetsAnnuels, _primeMensuelle, _anneesContrat);
         }
     }
 }
