@@ -1,20 +1,21 @@
 ﻿namespace Interets.New.logic
 {
+    using Logic;
     using System.Collections.Generic;
     using System.Drawing;
     using System.Linq;
 
     public class SuitePointsGraphiquesConvertor
     {
-        private readonly int _panelWidth;
-        private readonly int _panelHeight;
-        private readonly double _maxHeightOnY;
+        private readonly ChartParameters _chartParams;
+        private readonly MaxYofPointsDonneesCalculator _maxYofPointsDonneesCalculator;
 
-        public SuitePointsGraphiquesConvertor(int panelWidth, int panelHeight, double maxHeightOnY)
+        public SuitePointsGraphiquesConvertor(
+            ChartParameters chartParams, 
+            MaxYofPointsDonneesCalculator maxYofPointsDonneesCalculator)
         {
-            _panelWidth = panelWidth;
-            _panelHeight = panelHeight;
-            _maxHeightOnY = maxHeightOnY;
+            _chartParams = chartParams;
+            _maxYofPointsDonneesCalculator = maxYofPointsDonneesCalculator;
         }
 
         public IEnumerable<Point> Convert(ICollection<PointDonnees> donnees)
@@ -25,20 +26,20 @@
             return
                 from pointDonnees in donnees.OrderBy(d => d.X)
                 let x = (int)(pointDonnees.X * xScaleFactor)
-                let y = _panelHeight - (int)(pointDonnees.Y * yScaleFactor)
+                let y = _chartParams.PanelHeight - (int)(pointDonnees.Y * yScaleFactor)
                 select new Point(x, y);
-
         }
 
         private double GetyScaleFactor(IEnumerable<PointDonnees> donnees)
         {
             var maxY = donnees.Max(d => d.Y);
-            return (_panelHeight / maxY) * (maxY / _maxHeightOnY);
+            var maxHeightOnY = _maxYofPointsDonneesCalculator.Calculate();
+            return (_chartParams.PanelHeight / maxY) * (maxY / maxHeightOnY);
         }
 
         private double GetxScaleFactor(IEnumerable<PointDonnees> donnees)
         {
-            return _panelWidth / donnees.Max(d => d.X);
+            return _chartParams.PanelWidth / donnees.Max(d => d.X);
         }
     }
 }

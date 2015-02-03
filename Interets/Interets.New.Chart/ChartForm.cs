@@ -11,12 +11,14 @@
     public partial class ChartForm : Form
     {
         private readonly Graphics _graphics;
+        private readonly ChartParameters _chartParameters;
 
         public ChartForm()
         {
             InitializeComponent();
 
-            _graphics = pictureBox1.CreateGraphics();
+            _graphics = _chart.CreateGraphics();
+            _chartParameters = new ChartParameters(_chart.Width, _chart.Height);
         }
 
         private void FillChart()
@@ -24,8 +26,8 @@
             var donneesSaisies = new DonneesSaisies(3, 100, 16, 0);
             var gainNetData = new SuitePointsGainNetGenerator(new FormuleGain(), donneesSaisies).Generate().ToArray();
             var cotisationData = new SuitePointsCotisation(donneesSaisies).Generate().ToArray();
-            var maxY = new[] { gainNetData.Max(d => d.Y), cotisationData.Max(d => d.Y) }.Max(d => d);
-            var graphiquesGenerator = new SuitePointsGraphiquesConvertor(pictureBox1.Width, pictureBox1.Height, maxY);
+            var maxYCalc = new MaxYofPointsDonneesCalculator(new[] { gainNetData, cotisationData });
+            var graphiquesGenerator = new SuitePointsGraphiquesConvertor(_chartParameters, maxYCalc);
 
             var gainPoints = graphiquesGenerator.Convert(gainNetData);
             var cotisationPoints = graphiquesGenerator.Convert(cotisationData);
