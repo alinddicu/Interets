@@ -8,7 +8,7 @@
     {
         private readonly IEnumerable<PointDonnees[]> _tabs;
 
-        public MaxYofPointsDonneesCalculator(IEnumerable<PointDonnees[]> tabs)
+        public MaxYofPointsDonneesCalculator(params PointDonnees[][] tabs)
         {
             _tabs = tabs;
         }

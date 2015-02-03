@@ -26,7 +26,7 @@
             var donneesSaisies = new DonneesSaisies(3, 100, 16, 0);
             var gainNetData = new SuitePointsGainNetGenerator(new FormuleGain(), donneesSaisies).Generate().ToArray();
             var cotisationData = new SuitePointsCotisation(donneesSaisies).Generate().ToArray();
-            var maxYCalc = new MaxYofPointsDonneesCalculator(new[] { gainNetData, cotisationData });
+            var maxYCalc = new MaxYofPointsDonneesCalculator(gainNetData, cotisationData);
             var graphiquesGenerator = new SuitePointsGraphiquesConvertor(_chartParameters, maxYCalc);
 
             var gainPoints = graphiquesGenerator.Convert(gainNetData);
