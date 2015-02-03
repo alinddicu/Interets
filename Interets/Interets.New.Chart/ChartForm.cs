@@ -6,6 +6,7 @@
     using System.Linq;
     using System.Windows.Forms;
     using logic;
+    using Logic;
 
     public partial class ChartForm : Form
     {
@@ -20,8 +21,9 @@
 
         private void FillChart()
         {
-            var gainNetData = new SuitePointsGainNetGenerator(new FormuleGain()).Generate(3, 100, 16).ToArray();
-            var cotisationData = new SuitePointsCotisation().Generate(100, 16).ToArray();
+            var donneesSaisies = new DonneesSaisies(3, 100, 16, 0);
+            var gainNetData = new SuitePointsGainNetGenerator(new FormuleGain(), donneesSaisies).Generate().ToArray();
+            var cotisationData = new SuitePointsCotisation(donneesSaisies).Generate().ToArray();
             var maxY = new[] { gainNetData.Max(d => d.Y), cotisationData.Max(d => d.Y) }.Max(d => d);
             var graphiquesGenerator = new SuitePointsGraphiquesConvertor(pictureBox1.Width, pictureBox1.Height, maxY);
 
