@@ -53,6 +53,7 @@
   </Choose>
   <ItemGroup>
     <Compile Include="Calculette.cs" />
+    <Compile Include="DonneesSaisies.cs" />
     <Compile Include="FormuleGain.cs" />
     <Compile Include="PointDonnees.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

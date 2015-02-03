@@ -9,12 +9,16 @@
     [TestClass]
     public class CalculetteTest
     {
+        private static readonly FormuleGain FormuleGain = new FormuleGain();
+
         private Calculette _calculette;
+        private DonneesSaisies _donneesSaisies;
 
         [TestMethod]
         public void WhenTauxIs3AndNoFraisThenResultsAreCorrect()
         {
-            _calculette = new Calculette(new FormuleGain(), 3, 100, 1, 0);
+            _donneesSaisies = new DonneesSaisies(3, 100, 1, 0);
+            _calculette = new Calculette(FormuleGain, _donneesSaisies);
 
             var result = _calculette.Calculer();
 
@@ -25,7 +29,8 @@
         [TestMethod]
         public void WhenTauxIs3AndFraisIs5ThenResultsAreCorrect()
         {
-            _calculette = new Calculette(new FormuleGain(), 3, 100, 1, 5);
+            _donneesSaisies = new DonneesSaisies(3, 100, 1, 5);
+            _calculette = new Calculette(new FormuleGain(), _donneesSaisies);
 
             var result = _calculette.Calculer();
 
