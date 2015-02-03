@@ -1,4 +1,4 @@
-﻿namespace Interets.New.logic
+﻿namespace Interets.New.Logic
 {
     using System.Collections.Generic;
     using Logic;
@@ -16,7 +16,7 @@
 
         public IEnumerable<PointDonnees> Generate()
         {
-            for (var x = 0; x <= _donneesSaisies.AnneesContrat; x++)
+            for (var x = 1; x <= _donneesSaisies.AnneesContrat; x++)
             {
                 var gain = _formuleGain.Calculer(_donneesSaisies.InteretsMoyensNetsAnnuels, _donneesSaisies.PrimeMensuelle, x);
                 yield return new PointDonnees(x, gain);

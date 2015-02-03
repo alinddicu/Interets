@@ -1,7 +1,6 @@
 ﻿namespace Interets.New.Test
 {
     using Logic;
-    using logic;
     using Microsoft.VisualStudio.TestTools.UnitTesting;
     using NFluent;
 

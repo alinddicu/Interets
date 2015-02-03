@@ -60,7 +60,7 @@
     <Compile Include="PointDonnees.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ResultatCalcul.cs" />
-    <Compile Include="SuitePointsCotisation.cs" />
+    <Compile Include="SuitePointsCotisationGenerator.cs" />
     <Compile Include="SuitePointsGainNetGenerator.cs" />
     <Compile Include="SuitePointsGraphiquesConvertor.cs" />
   </ItemGroup>

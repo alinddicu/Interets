@@ -2,7 +2,6 @@
 {
     using System;
     using Logic;
-    using logic;
     using Microsoft.VisualStudio.TestTools.UnitTesting;
     using NFluent;
 

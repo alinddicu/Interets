@@ -57,6 +57,7 @@
     <Compile Include="CalculetteTest.cs" />
     <Compile Include="MaxYofPointsDonneesCalculatorTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SuitePointsCotisationGeneratorTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

@@ -5,7 +5,6 @@
     using System.Drawing;
     using System.Linq;
     using System.Windows.Forms;
-    using logic;
     using Logic;
 
     public partial class ChartForm : Form
@@ -25,22 +24,23 @@
         {
             var donneesSaisies = new DonneesSaisies(3, 100, 16, 0);
             var gainNetData = new SuitePointsGainNetGenerator(new FormuleGain(), donneesSaisies).Generate().ToArray();
-            var cotisationData = new SuitePointsCotisation(donneesSaisies).Generate().ToArray();
+            var cotisationData = new SuitePointsCotisationGenerator(donneesSaisies).Generate().ToArray();
             var maxYCalc = new MaxYofPointsDonneesCalculator(gainNetData, cotisationData);
             var graphiquesGenerator = new SuitePointsGraphiquesConvertor(_chartParameters, maxYCalc);
 
             var gainPoints = graphiquesGenerator.Convert(gainNetData);
             var cotisationPoints = graphiquesGenerator.Convert(cotisationData);
 
-            PrintPoints(gainPoints, new Pen(Color.Green));
-            PrintPoints(cotisationPoints, new Pen(Color.Blue));
+            PrintPoints(gainPoints.ToArray(), new Pen(Color.Green));
+            PrintPoints(cotisationPoints.ToArray(), new Pen(Color.Blue));
         }
 
-        private void PrintPoints(IEnumerable<Point> gainPoints, Pen pen)
+        private void PrintPoints(IList<Point> gainPoints, Pen pen)
         {
-            var lastPoint = new Point(0, 0);
-            foreach (var point in gainPoints)
+            var lastPoint = gainPoints[0];
+            for (var i = 1; i < gainPoints.Count(); i++)
             {
+                var point = gainPoints[i];
                 _graphics.DrawLine(pen, lastPoint.X, lastPoint.Y, point.X, point.Y);
                 lastPoint = point;
             }

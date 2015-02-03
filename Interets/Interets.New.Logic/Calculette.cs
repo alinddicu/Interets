@@ -1,6 +1,6 @@
 ﻿namespace Interets.New.Logic
 {
-    using logic;
+    using Logic;
 
     public class Calculette
     {

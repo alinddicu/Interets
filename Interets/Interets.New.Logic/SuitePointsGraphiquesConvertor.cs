@@ -1,4 +1,4 @@
-﻿namespace Interets.New.logic
+﻿namespace Interets.New.Logic
 {
     using Logic;
     using System.Collections.Generic;
