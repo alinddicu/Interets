@@ -30,6 +30,7 @@
         [TestMethod]
         public void WhenTauxIs3AndFraisIs5ThenResultsAreCorrect()
         {
+            _donneesSaisies = new DonneesSaisies(3, 100, 1, 5);
             _formuleCotisation = new FormuleCotisation(_donneesSaisies);
             _calculette = new Calculette(FormuleGainBrut, _formuleCotisation, _donneesSaisies);
 

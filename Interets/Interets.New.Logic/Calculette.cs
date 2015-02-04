@@ -3,7 +3,7 @@
     public class Calculette
     {
         private readonly FormuleGainBrut _formuleGainBrut;
-        private FormuleCotisation _formuleCotisation;
+        private readonly FormuleCotisation _formuleCotisation;
         private readonly DonneesSaisies _donneesSaisies;
 
         public Calculette(

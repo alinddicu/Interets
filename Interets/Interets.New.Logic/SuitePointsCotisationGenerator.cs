@@ -5,9 +5,13 @@
     public class SuitePointsCotisationGenerator
     {
         private readonly DonneesSaisies _donneesSaisies;
+        private readonly FormuleCotisation _formuleCotisation;
 
-        public SuitePointsCotisationGenerator(DonneesSaisies donneesSaisies)
+        public SuitePointsCotisationGenerator(
+            FormuleCotisation formuleCotisation, 
+            DonneesSaisies donneesSaisies)
         {
+            _formuleCotisation = formuleCotisation;
             _donneesSaisies = donneesSaisies;
         }
 
@@ -15,7 +19,7 @@
         {
             for (var i = 0; i <= _donneesSaisies.AnneesContrat * 12; i++)
             {
-                yield return new PointDonnees(i, i * _donneesSaisies.PrimeMensuelle);
+                yield return new PointDonnees(i, _formuleCotisation.Calculer(i));
             }
         }
     }

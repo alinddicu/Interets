@@ -16,7 +16,8 @@
             const double primeMensuelle = 100.0;
             const int anneesContrat = 1;
             var donneesSaisies = new DonneesSaisies(0, primeMensuelle, anneesContrat, 0);
-            _generator = new SuitePointsCotisationGenerator(donneesSaisies);
+            var formuleCotisation = new FormuleCotisation(donneesSaisies);
+            _generator = new SuitePointsCotisationGenerator(formuleCotisation, donneesSaisies);
 
             var donnees = _generator.Generate().ToArray();
             Check.That(donnees).HasSize(anneesContrat * 13);

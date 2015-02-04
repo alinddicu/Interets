@@ -24,7 +24,8 @@
         private void TracerChart()
         {
             var gainNetData = new SuitePointsGainNetGenerator(new FormuleGainBrut(), _donneesSaisies).Generate().ToArray();
-            var cotisationData = new SuitePointsCotisationGenerator(_donneesSaisies).Generate().ToArray();
+            var formuleCotisation = new FormuleCotisation(_donneesSaisies);
+            var cotisationData = new SuitePointsCotisationGenerator(formuleCotisation, _donneesSaisies).Generate().ToArray();
             var maxYCalc = new MaxYofPointsDonneesCalculator(gainNetData, cotisationData);
             var graphiquesGenerator = new SuitePointsForChartConvertor(_chartParameters, maxYCalc);
 
