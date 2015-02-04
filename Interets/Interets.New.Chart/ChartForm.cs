@@ -67,5 +67,17 @@
             textBoxGainNet.Text = resultatCalcul.GainNet.ToString("#.##");
             textBoxGainBrut.Text = resultatCalcul.GainBrut.ToString("#.##");
         }
+
+        private static void CentrerForm(Form form)
+        {
+            form.Location = new Point(
+            Screen.PrimaryScreen.Bounds.Width / 2 - form.Width / 2,
+            Screen.PrimaryScreen.Bounds.Height / 2 - form.Height / 2);
+        }
+
+        private void ChartForm_Load(object sender, EventArgs e)
+        {
+            CentrerForm(this);
+        }
     }
 }

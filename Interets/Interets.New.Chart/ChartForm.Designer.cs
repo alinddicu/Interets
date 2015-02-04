@@ -221,6 +221,7 @@
             this.Controls.Add(this._chart);
             this.Name = "ChartForm";
             this.Text = "Gain assurance vie";
+            this.Load += new System.EventHandler(this.ChartForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this._chart)).EndInit();
             this.panelDataInput.ResumeLayout(false);
             this.panelDataInput.PerformLayout();
