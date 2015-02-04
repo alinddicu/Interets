@@ -8,7 +8,7 @@
     [TestClass]
     public class CalculetteTest
     {
-        private static readonly FormuleGain FormuleGain = new FormuleGain();
+        private static readonly FormuleGainBrut FormuleGainBrut = new FormuleGainBrut();
 
         private Calculette _calculette;
         private DonneesSaisies _donneesSaisies;
@@ -17,7 +17,7 @@
         public void WhenTauxIs3AndNoFraisThenResultsAreCorrect()
         {
             _donneesSaisies = new DonneesSaisies(3, 100, 1, 0);
-            _calculette = new Calculette(FormuleGain, _donneesSaisies);
+            _calculette = new Calculette(FormuleGainBrut, _donneesSaisies);
 
             var result = _calculette.Calculer();
 
@@ -29,7 +29,7 @@
         public void WhenTauxIs3AndFraisIs5ThenResultsAreCorrect()
         {
             _donneesSaisies = new DonneesSaisies(3, 100, 1, 5);
-            _calculette = new Calculette(new FormuleGain(), _donneesSaisies);
+            _calculette = new Calculette(new FormuleGainBrut(), _donneesSaisies);
 
             var result = _calculette.Calculer();
 

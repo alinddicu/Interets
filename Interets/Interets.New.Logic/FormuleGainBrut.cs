@@ -2,7 +2,7 @@
 {
     using System;
 
-    public class FormuleGain
+    public class FormuleGainBrut
     {
         public double Calculer(double interetsMoyensNetsAnnuels, double primeMensuelle, double anneesContrat)
         {

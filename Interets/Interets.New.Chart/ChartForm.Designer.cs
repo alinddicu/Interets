@@ -43,6 +43,8 @@
             this.labelPrimeMensuelle = new System.Windows.Forms.Label();
             this.textBoxTaux = new System.Windows.Forms.TextBox();
             this.labelTaux = new System.Windows.Forms.Label();
+            this.labelGainBrut = new System.Windows.Forms.Label();
+            this.textBoxGainBrut = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this._chart)).BeginInit();
             this.panelDataInput.SuspendLayout();
             this.SuspendLayout();
@@ -60,6 +62,8 @@
             // panelDataInput
             // 
             this.panelDataInput.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panelDataInput.Controls.Add(this.textBoxGainBrut);
+            this.panelDataInput.Controls.Add(this.labelGainBrut);
             this.panelDataInput.Controls.Add(this.textBoxCotisation);
             this.panelDataInput.Controls.Add(this.labelCotisation);
             this.panelDataInput.Controls.Add(this.textBoxGainNet);
@@ -81,7 +85,7 @@
             // 
             // textBoxCotisation
             // 
-            this.textBoxCotisation.Location = new System.Drawing.Point(455, 37);
+            this.textBoxCotisation.Location = new System.Drawing.Point(455, 68);
             this.textBoxCotisation.Name = "textBoxCotisation";
             this.textBoxCotisation.ReadOnly = true;
             this.textBoxCotisation.Size = new System.Drawing.Size(100, 20);
@@ -90,7 +94,7 @@
             // labelCotisation
             // 
             this.labelCotisation.AutoSize = true;
-            this.labelCotisation.Location = new System.Drawing.Point(393, 40);
+            this.labelCotisation.Location = new System.Drawing.Point(393, 71);
             this.labelCotisation.Name = "labelCotisation";
             this.labelCotisation.Size = new System.Drawing.Size(53, 13);
             this.labelCotisation.TabIndex = 11;
@@ -132,7 +136,7 @@
             // 
             // buttonCalculer
             // 
-            this.buttonCalculer.Location = new System.Drawing.Point(480, 66);
+            this.buttonCalculer.Location = new System.Drawing.Point(312, 66);
             this.buttonCalculer.Name = "buttonCalculer";
             this.buttonCalculer.Size = new System.Drawing.Size(75, 23);
             this.buttonCalculer.TabIndex = 6;
@@ -191,6 +195,23 @@
             this.labelTaux.TabIndex = 0;
             this.labelTaux.Text = "Taux net";
             // 
+            // labelGainBrut
+            // 
+            this.labelGainBrut.AutoSize = true;
+            this.labelGainBrut.Location = new System.Drawing.Point(393, 45);
+            this.labelGainBrut.Name = "labelGainBrut";
+            this.labelGainBrut.Size = new System.Drawing.Size(50, 13);
+            this.labelGainBrut.TabIndex = 13;
+            this.labelGainBrut.Text = "Gain brut";
+            // 
+            // textBoxGainBrut
+            // 
+            this.textBoxGainBrut.Location = new System.Drawing.Point(455, 42);
+            this.textBoxGainBrut.Name = "textBoxGainBrut";
+            this.textBoxGainBrut.ReadOnly = true;
+            this.textBoxGainBrut.Size = new System.Drawing.Size(100, 20);
+            this.textBoxGainBrut.TabIndex = 14;
+            // 
             // ChartForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -199,7 +220,7 @@
             this.Controls.Add(this.panelDataInput);
             this.Controls.Add(this._chart);
             this.Name = "ChartForm";
-            this.Text = "Intérêts assurance vie";
+            this.Text = "Gain assurance vie";
             ((System.ComponentModel.ISupportInitialize)(this._chart)).EndInit();
             this.panelDataInput.ResumeLayout(false);
             this.panelDataInput.PerformLayout();
@@ -224,6 +245,8 @@
         private System.Windows.Forms.TextBox textBoxCotisation;
         private System.Windows.Forms.Label labelCotisation;
         private System.Windows.Forms.TextBox textBoxGainNet;
+        private System.Windows.Forms.TextBox textBoxGainBrut;
+        private System.Windows.Forms.Label labelGainBrut;
     }
 }
 

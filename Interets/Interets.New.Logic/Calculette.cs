@@ -2,12 +2,12 @@
 {
     public class Calculette
     {
-        private readonly FormuleGain _formuleGain;
+        private readonly FormuleGainBrut _formuleGainBrut;
         private readonly DonneesSaisies _donneesSaisies;
 
-        public Calculette(FormuleGain formuleGain, DonneesSaisies donneesSaisies)
+        public Calculette(FormuleGainBrut formuleGainBrut, DonneesSaisies donneesSaisies)
         {
-            _formuleGain = formuleGain;
+            _formuleGainBrut = formuleGainBrut;
             _donneesSaisies = donneesSaisies;
         }
 
@@ -17,7 +17,7 @@
             var gainNet = gainBrut - _donneesSaisies.FraisGlobaux;
             var rendemmentGlobal = GetRendemmentGlobal(gainNet);
 
-            return new ResultatCalcul(gainBrut, gainNet, rendemmentGlobal);
+            return new ResultatCalcul(gainBrut, gainNet, rendemmentGlobal, 0);
         }
 
         private double GetRendemmentGlobal(double gainNet)
@@ -28,7 +28,7 @@
 
         private double GetGainBrut()
         {
-            return _formuleGain.Calculer(
+            return _formuleGainBrut.Calculer(
                 _donneesSaisies.InteretsMoyensNetsAnnuels, 
                 _donneesSaisies.PrimeMensuelle, 
                 _donneesSaisies.AnneesContrat);

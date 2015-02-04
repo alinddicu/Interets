@@ -1,16 +1,15 @@
 ﻿namespace Interets.New.Logic
 {
-    using Logic;
     using System.Collections.Generic;
     using System.Drawing;
     using System.Linq;
 
-    public class SuitePointsGraphiquesConvertor
+    public class SuitePointsForChartConvertor
     {
         private readonly ChartParameters _chartParams;
         private readonly MaxYofPointsDonneesCalculator _maxYofPointsDonneesCalculator;
 
-        public SuitePointsGraphiquesConvertor(
+        public SuitePointsForChartConvertor(
             ChartParameters chartParams, 
             MaxYofPointsDonneesCalculator maxYofPointsDonneesCalculator)
         {

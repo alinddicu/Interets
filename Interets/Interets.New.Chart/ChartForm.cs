@@ -23,10 +23,10 @@
 
         private void TracerChart()
         {
-            var gainNetData = new SuitePointsGainNetGenerator(new FormuleGain(), _donneesSaisies).Generate().ToArray();
+            var gainNetData = new SuitePointsGainNetGenerator(new FormuleGainBrut(), _donneesSaisies).Generate().ToArray();
             var cotisationData = new SuitePointsCotisationGenerator(_donneesSaisies).Generate().ToArray();
             var maxYCalc = new MaxYofPointsDonneesCalculator(gainNetData, cotisationData);
-            var graphiquesGenerator = new SuitePointsGraphiquesConvertor(_chartParameters, maxYCalc);
+            var graphiquesGenerator = new SuitePointsForChartConvertor(_chartParameters, maxYCalc);
 
             var gainPoints = graphiquesGenerator.Convert(gainNetData);
             var cotisationPoints = graphiquesGenerator.Convert(cotisationData);
@@ -61,11 +61,11 @@
 
         private void Remplir()
         {
-            var calculette = new Calculette(new FormuleGain(), _donneesSaisies);
+            var calculette = new Calculette(new FormuleGainBrut(), _donneesSaisies);
             var resultatCalcul = calculette.Calculer();
 
             textBoxGainNet.Text = resultatCalcul.GainNet.ToString("#.##");
-            //textBoxCotisation.Text = resultatCalcul..ToString("#.##");
+            textBoxGainBrut.Text = resultatCalcul.GainBrut.ToString("#.##");
         }
     }
 }
