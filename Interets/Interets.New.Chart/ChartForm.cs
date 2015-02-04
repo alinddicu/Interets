@@ -61,11 +61,12 @@
 
         private void Remplir()
         {
-            var calculette = new Calculette(new FormuleGainBrut(), _donneesSaisies);
+            var calculette = new Calculette(new FormuleGainBrut(), new FormuleCotisation(_donneesSaisies), _donneesSaisies);
             var resultatCalcul = calculette.Calculer();
 
             textBoxGainNet.Text = resultatCalcul.GainNet.ToString("#.##");
             textBoxGainBrut.Text = resultatCalcul.GainBrut.ToString("#.##");
+            textBoxCotisation.Text = resultatCalcul.Cotisation.ToString("#.##");
         }
 
         private static void CentrerForm(Form form)

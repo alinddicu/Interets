@@ -12,12 +12,14 @@
 
         private Calculette _calculette;
         private DonneesSaisies _donneesSaisies;
+        private FormuleCotisation _formuleCotisation;
 
         [TestMethod]
         public void WhenTauxIs3AndNoFraisThenResultsAreCorrect()
         {
             _donneesSaisies = new DonneesSaisies(3, 100, 1, 0);
-            _calculette = new Calculette(FormuleGainBrut, _donneesSaisies);
+            _formuleCotisation = new FormuleCotisation(_donneesSaisies);
+            _calculette = new Calculette(FormuleGainBrut, _formuleCotisation, _donneesSaisies);
 
             var result = _calculette.Calculer();
 
@@ -28,8 +30,8 @@
         [TestMethod]
         public void WhenTauxIs3AndFraisIs5ThenResultsAreCorrect()
         {
-            _donneesSaisies = new DonneesSaisies(3, 100, 1, 5);
-            _calculette = new Calculette(new FormuleGainBrut(), _donneesSaisies);
+            _formuleCotisation = new FormuleCotisation(_donneesSaisies);
+            _calculette = new Calculette(FormuleGainBrut, _formuleCotisation, _donneesSaisies);
 
             var result = _calculette.Calculer();
 

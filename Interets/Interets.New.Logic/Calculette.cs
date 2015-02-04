@@ -3,11 +3,16 @@
     public class Calculette
     {
         private readonly FormuleGainBrut _formuleGainBrut;
+        private FormuleCotisation _formuleCotisation;
         private readonly DonneesSaisies _donneesSaisies;
 
-        public Calculette(FormuleGainBrut formuleGainBrut, DonneesSaisies donneesSaisies)
+        public Calculette(
+            FormuleGainBrut formuleGainBrut,
+            FormuleCotisation formuleCotisation,
+            DonneesSaisies donneesSaisies)
         {
             _formuleGainBrut = formuleGainBrut;
+            _formuleCotisation = formuleCotisation;
             _donneesSaisies = donneesSaisies;
         }
 
@@ -16,8 +21,9 @@
             var gainBrut = GetGainBrut();
             var gainNet = gainBrut - _donneesSaisies.FraisGlobaux;
             var rendemmentGlobal = GetRendemmentGlobal(gainNet);
+            var cotisation = _formuleCotisation.Calculer(_donneesSaisies.AnneesContrat * 12);
 
-            return new ResultatCalcul(gainBrut, gainNet, rendemmentGlobal, 0);
+            return new ResultatCalcul(gainBrut, gainNet, rendemmentGlobal, cotisation);
         }
 
         private double GetRendemmentGlobal(double gainNet)
@@ -29,8 +35,8 @@
         private double GetGainBrut()
         {
             return _formuleGainBrut.Calculer(
-                _donneesSaisies.InteretsMoyensNetsAnnuels, 
-                _donneesSaisies.PrimeMensuelle, 
+                _donneesSaisies.InteretsMoyensNetsAnnuels,
+                _donneesSaisies.PrimeMensuelle,
                 _donneesSaisies.AnneesContrat);
         }
     }
