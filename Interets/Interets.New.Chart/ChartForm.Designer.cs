@@ -35,7 +35,7 @@
             this.textBoxTaux = new System.Windows.Forms.TextBox();
             this.labelTaux = new System.Windows.Forms.Label();
             this.labelDuree = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.textBoxDuree = new System.Windows.Forms.TextBox();
             this.buttonCalculer = new System.Windows.Forms.Button();
             this.labelFraisGlobaux = new System.Windows.Forms.Label();
             this.textBoxFraisGlobaux = new System.Windows.Forms.TextBox();
@@ -67,7 +67,7 @@
             this.panelDataInput.Controls.Add(this.textBoxFraisGlobaux);
             this.panelDataInput.Controls.Add(this.labelFraisGlobaux);
             this.panelDataInput.Controls.Add(this.buttonCalculer);
-            this.panelDataInput.Controls.Add(this.textBox1);
+            this.panelDataInput.Controls.Add(this.textBoxDuree);
             this.panelDataInput.Controls.Add(this.labelDuree);
             this.panelDataInput.Controls.Add(this.textBoxPrimeMensuelle);
             this.panelDataInput.Controls.Add(this.labelPrimeMensuelle);
@@ -122,13 +122,13 @@
             this.labelDuree.TabIndex = 4;
             this.labelDuree.Text = "Durée";
             // 
-            // textBox1
+            // textBoxDuree
             // 
-            this.textBox1.Location = new System.Drawing.Point(106, 68);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(100, 20);
-            this.textBox1.TabIndex = 5;
-            this.textBox1.Text = "8";
+            this.textBoxDuree.Location = new System.Drawing.Point(106, 68);
+            this.textBoxDuree.Name = "textBoxDuree";
+            this.textBoxDuree.Size = new System.Drawing.Size(100, 20);
+            this.textBoxDuree.TabIndex = 5;
+            this.textBoxDuree.Text = "8";
             // 
             // buttonCalculer
             // 
@@ -216,7 +216,7 @@
         private System.Windows.Forms.TextBox textBoxTaux;
         private System.Windows.Forms.Label labelTaux;
         private System.Windows.Forms.Button buttonCalculer;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox textBoxDuree;
         private System.Windows.Forms.Label labelDuree;
         private System.Windows.Forms.TextBox textBoxFraisGlobaux;
         private System.Windows.Forms.Label labelFraisGlobaux;

@@ -22,7 +22,7 @@
 
         private void Calculer()
         {
-            var donneesSaisies = new DonneesSaisies(3, 100, 16, 0);
+            var donneesSaisies = new DonneesSaisiesConvertor(textBoxTaux.Text, textBoxPrimeMensuelle.Text, textBoxDuree.Text, textBoxFraisGlobaux.Text).Convert();
             var gainNetData = new SuitePointsGainNetGenerator(new FormuleGain(), donneesSaisies).Generate().ToArray();
             var cotisationData = new SuitePointsCotisationGenerator(donneesSaisies).Generate().ToArray();
             var maxYCalc = new MaxYofPointsDonneesCalculator(gainNetData, cotisationData);

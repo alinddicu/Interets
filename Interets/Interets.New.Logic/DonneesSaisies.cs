@@ -2,7 +2,7 @@
 {
     public class DonneesSaisies
     {
-        public DonneesSaisies(double interetsMoyensNetsAnnuels, double primeMensuelle, int anneesContrat, double fraisGlobaux)
+        public DonneesSaisies(double interetsMoyensNetsAnnuels, double primeMensuelle, double anneesContrat, double fraisGlobaux)
         {
             InteretsMoyensNetsAnnuels = interetsMoyensNetsAnnuels;
             PrimeMensuelle = primeMensuelle;

@@ -51,6 +51,7 @@
     <Compile Include="ChartForm.Designer.cs">
       <DependentUpon>ChartForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="DonneesSaisiesConvertor.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="ChartForm.resx">
