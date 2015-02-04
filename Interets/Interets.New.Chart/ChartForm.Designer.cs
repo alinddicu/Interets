@@ -29,28 +29,180 @@
         private void InitializeComponent()
         {
             this._chart = new System.Windows.Forms.PictureBox();
+            this.panelDataInput = new System.Windows.Forms.Panel();
+            this.textBoxPrimeMensuelle = new System.Windows.Forms.TextBox();
+            this.labelPrimeMensuelle = new System.Windows.Forms.Label();
+            this.textBoxTaux = new System.Windows.Forms.TextBox();
+            this.labelTaux = new System.Windows.Forms.Label();
+            this.labelDuree = new System.Windows.Forms.Label();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.buttonCalculer = new System.Windows.Forms.Button();
+            this.labelFraisGlobaux = new System.Windows.Forms.Label();
+            this.textBoxFraisGlobaux = new System.Windows.Forms.TextBox();
+            this.labelGainNet = new System.Windows.Forms.Label();
+            this.textBoxGainNet = new System.Windows.Forms.TextBox();
+            this.labelCotisation = new System.Windows.Forms.Label();
+            this.textBoxCotisation = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this._chart)).BeginInit();
+            this.panelDataInput.SuspendLayout();
             this.SuspendLayout();
             // 
             // _chart
             // 
-            this._chart.Dock = System.Windows.Forms.DockStyle.Fill;
-            this._chart.Location = new System.Drawing.Point(0, 0);
+            this._chart.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this._chart.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this._chart.Location = new System.Drawing.Point(0, 105);
             this._chart.Name = "_chart";
-            this._chart.Size = new System.Drawing.Size(579, 403);
+            this._chart.Size = new System.Drawing.Size(573, 346);
             this._chart.TabIndex = 0;
             this._chart.TabStop = false;
-            this._chart.Click += new System.EventHandler(this.pictureBox1_Click);
+            // 
+            // panelDataInput
+            // 
+            this.panelDataInput.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panelDataInput.Controls.Add(this.textBoxCotisation);
+            this.panelDataInput.Controls.Add(this.labelCotisation);
+            this.panelDataInput.Controls.Add(this.textBoxGainNet);
+            this.panelDataInput.Controls.Add(this.labelGainNet);
+            this.panelDataInput.Controls.Add(this.textBoxFraisGlobaux);
+            this.panelDataInput.Controls.Add(this.labelFraisGlobaux);
+            this.panelDataInput.Controls.Add(this.buttonCalculer);
+            this.panelDataInput.Controls.Add(this.textBox1);
+            this.panelDataInput.Controls.Add(this.labelDuree);
+            this.panelDataInput.Controls.Add(this.textBoxPrimeMensuelle);
+            this.panelDataInput.Controls.Add(this.labelPrimeMensuelle);
+            this.panelDataInput.Controls.Add(this.textBoxTaux);
+            this.panelDataInput.Controls.Add(this.labelTaux);
+            this.panelDataInput.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panelDataInput.Location = new System.Drawing.Point(0, 0);
+            this.panelDataInput.Name = "panelDataInput";
+            this.panelDataInput.Size = new System.Drawing.Size(573, 99);
+            this.panelDataInput.TabIndex = 1;
+            // 
+            // textBoxPrimeMensuelle
+            // 
+            this.textBoxPrimeMensuelle.Location = new System.Drawing.Point(106, 42);
+            this.textBoxPrimeMensuelle.Name = "textBoxPrimeMensuelle";
+            this.textBoxPrimeMensuelle.Size = new System.Drawing.Size(100, 20);
+            this.textBoxPrimeMensuelle.TabIndex = 3;
+            this.textBoxPrimeMensuelle.Text = "180";
+            // 
+            // labelPrimeMensuelle
+            // 
+            this.labelPrimeMensuelle.AutoSize = true;
+            this.labelPrimeMensuelle.Location = new System.Drawing.Point(13, 45);
+            this.labelPrimeMensuelle.Name = "labelPrimeMensuelle";
+            this.labelPrimeMensuelle.Size = new System.Drawing.Size(83, 13);
+            this.labelPrimeMensuelle.TabIndex = 2;
+            this.labelPrimeMensuelle.Text = "Prime mensuelle";
+            // 
+            // textBoxTaux
+            // 
+            this.textBoxTaux.Location = new System.Drawing.Point(106, 15);
+            this.textBoxTaux.Name = "textBoxTaux";
+            this.textBoxTaux.Size = new System.Drawing.Size(100, 20);
+            this.textBoxTaux.TabIndex = 1;
+            this.textBoxTaux.Text = "3";
+            // 
+            // labelTaux
+            // 
+            this.labelTaux.AutoSize = true;
+            this.labelTaux.Location = new System.Drawing.Point(13, 18);
+            this.labelTaux.Name = "labelTaux";
+            this.labelTaux.Size = new System.Drawing.Size(31, 13);
+            this.labelTaux.TabIndex = 0;
+            this.labelTaux.Text = "Taux";
+            // 
+            // labelDuree
+            // 
+            this.labelDuree.AutoSize = true;
+            this.labelDuree.Location = new System.Drawing.Point(13, 71);
+            this.labelDuree.Name = "labelDuree";
+            this.labelDuree.Size = new System.Drawing.Size(36, 13);
+            this.labelDuree.TabIndex = 4;
+            this.labelDuree.Text = "Durée";
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(106, 68);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(100, 20);
+            this.textBox1.TabIndex = 5;
+            this.textBox1.Text = "8";
+            // 
+            // buttonCalculer
+            // 
+            this.buttonCalculer.Location = new System.Drawing.Point(480, 66);
+            this.buttonCalculer.Name = "buttonCalculer";
+            this.buttonCalculer.Size = new System.Drawing.Size(75, 23);
+            this.buttonCalculer.TabIndex = 6;
+            this.buttonCalculer.Text = "Calculer";
+            this.buttonCalculer.UseVisualStyleBackColor = true;
+            this.buttonCalculer.Click += new System.EventHandler(this.buttonCalculer_Click);
+            // 
+            // labelFraisGlobaux
+            // 
+            this.labelFraisGlobaux.AutoSize = true;
+            this.labelFraisGlobaux.Location = new System.Drawing.Point(212, 18);
+            this.labelFraisGlobaux.Name = "labelFraisGlobaux";
+            this.labelFraisGlobaux.Size = new System.Drawing.Size(69, 13);
+            this.labelFraisGlobaux.TabIndex = 7;
+            this.labelFraisGlobaux.Text = "Frais globaux";
+            // 
+            // textBoxFraisGlobaux
+            // 
+            this.textBoxFraisGlobaux.Location = new System.Drawing.Point(287, 15);
+            this.textBoxFraisGlobaux.Name = "textBoxFraisGlobaux";
+            this.textBoxFraisGlobaux.Size = new System.Drawing.Size(100, 20);
+            this.textBoxFraisGlobaux.TabIndex = 8;
+            this.textBoxFraisGlobaux.Text = "2200";
+            // 
+            // labelGainNet
+            // 
+            this.labelGainNet.AutoSize = true;
+            this.labelGainNet.Location = new System.Drawing.Point(393, 18);
+            this.labelGainNet.Name = "labelGainNet";
+            this.labelGainNet.Size = new System.Drawing.Size(47, 13);
+            this.labelGainNet.TabIndex = 9;
+            this.labelGainNet.Text = "Gain net";
+            // 
+            // textBoxGainNet
+            // 
+            this.textBoxGainNet.Location = new System.Drawing.Point(455, 11);
+            this.textBoxGainNet.Name = "textBoxGainNet";
+            this.textBoxGainNet.ReadOnly = true;
+            this.textBoxGainNet.Size = new System.Drawing.Size(100, 20);
+            this.textBoxGainNet.TabIndex = 10;
+            // 
+            // labelCotisation
+            // 
+            this.labelCotisation.AutoSize = true;
+            this.labelCotisation.Location = new System.Drawing.Point(393, 40);
+            this.labelCotisation.Name = "labelCotisation";
+            this.labelCotisation.Size = new System.Drawing.Size(53, 13);
+            this.labelCotisation.TabIndex = 11;
+            this.labelCotisation.Text = "Cotisation";
+            // 
+            // textBoxCotisation
+            // 
+            this.textBoxCotisation.Location = new System.Drawing.Point(455, 37);
+            this.textBoxCotisation.Name = "textBoxCotisation";
+            this.textBoxCotisation.ReadOnly = true;
+            this.textBoxCotisation.Size = new System.Drawing.Size(100, 20);
+            this.textBoxCotisation.TabIndex = 12;
             // 
             // ChartForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(579, 403);
+            this.ClientSize = new System.Drawing.Size(573, 451);
+            this.Controls.Add(this.panelDataInput);
             this.Controls.Add(this._chart);
             this.Name = "ChartForm";
-            this.Text = "Form1";
+            this.Text = "Intérêts assurance vie";
             ((System.ComponentModel.ISupportInitialize)(this._chart)).EndInit();
+            this.panelDataInput.ResumeLayout(false);
+            this.panelDataInput.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -58,6 +210,20 @@
         #endregion
 
         private System.Windows.Forms.PictureBox _chart;
+        private System.Windows.Forms.Panel panelDataInput;
+        private System.Windows.Forms.TextBox textBoxPrimeMensuelle;
+        private System.Windows.Forms.Label labelPrimeMensuelle;
+        private System.Windows.Forms.TextBox textBoxTaux;
+        private System.Windows.Forms.Label labelTaux;
+        private System.Windows.Forms.Button buttonCalculer;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Label labelDuree;
+        private System.Windows.Forms.TextBox textBoxFraisGlobaux;
+        private System.Windows.Forms.Label labelFraisGlobaux;
+        private System.Windows.Forms.Label labelGainNet;
+        private System.Windows.Forms.TextBox textBoxCotisation;
+        private System.Windows.Forms.Label labelCotisation;
+        private System.Windows.Forms.TextBox textBoxGainNet;
     }
 }
 

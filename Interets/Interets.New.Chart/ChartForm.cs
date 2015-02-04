@@ -20,7 +20,7 @@
             _chartParameters = new ChartParameters(_chart.Width, _chart.Height);
         }
 
-        private void FillChart()
+        private void Calculer()
         {
             var donneesSaisies = new DonneesSaisies(3, 100, 16, 0);
             var gainNetData = new SuitePointsGainNetGenerator(new FormuleGain(), donneesSaisies).Generate().ToArray();
@@ -46,9 +46,9 @@
             }
         }
 
-        private void pictureBox1_Click(object sender, EventArgs e)
+        private void buttonCalculer_Click(object sender, EventArgs e)
         {
-            FillChart();
+            Calculer();
         }
     }
 }

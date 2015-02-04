@@ -1,7 +1,6 @@
 ﻿namespace Interets.New.Logic
 {
     using System.Collections.Generic;
-    using Logic;
 
     public class SuitePointsGainNetGenerator
     {
