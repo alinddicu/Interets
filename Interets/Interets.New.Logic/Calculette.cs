@@ -1,7 +1,5 @@
 ﻿namespace Interets.New.Logic
 {
-    using Logic;
-
     public class Calculette
     {
         private readonly FormuleGain _formuleGain;

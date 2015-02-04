@@ -11,6 +11,7 @@
     {
         private readonly Graphics _graphics;
         private readonly ChartParameters _chartParameters;
+        private DonneesSaisies _donneesSaisies;
 
         public ChartForm()
         {
@@ -20,17 +21,17 @@
             _chartParameters = new ChartParameters(_chart.Width, _chart.Height);
         }
 
-        private void Calculer()
+        private void TracerChart()
         {
-            var donneesSaisies = new DonneesSaisiesConvertor(textBoxTaux.Text, textBoxPrimeMensuelle.Text, textBoxDuree.Text, textBoxFraisGlobaux.Text).Convert();
-            var gainNetData = new SuitePointsGainNetGenerator(new FormuleGain(), donneesSaisies).Generate().ToArray();
-            var cotisationData = new SuitePointsCotisationGenerator(donneesSaisies).Generate().ToArray();
+            var gainNetData = new SuitePointsGainNetGenerator(new FormuleGain(), _donneesSaisies).Generate().ToArray();
+            var cotisationData = new SuitePointsCotisationGenerator(_donneesSaisies).Generate().ToArray();
             var maxYCalc = new MaxYofPointsDonneesCalculator(gainNetData, cotisationData);
             var graphiquesGenerator = new SuitePointsGraphiquesConvertor(_chartParameters, maxYCalc);
 
             var gainPoints = graphiquesGenerator.Convert(gainNetData);
             var cotisationPoints = graphiquesGenerator.Convert(cotisationData);
 
+            _graphics.Clear(_chart.BackColor);
             PrintPoints(gainPoints.ToArray(), new Pen(Color.Green));
             PrintPoints(cotisationPoints.ToArray(), new Pen(Color.Blue));
         }
@@ -48,7 +49,23 @@
 
         private void buttonCalculer_Click(object sender, EventArgs e)
         {
-            Calculer();
+            ConvertirSaisie();
+            Remplir();
+            TracerChart();
+        }
+
+        private void ConvertirSaisie()
+        {
+            _donneesSaisies = new DonneesSaisiesConvertor(textBoxTaux.Text, textBoxPrimeMensuelle.Text, textBoxDuree.Text, textBoxFraisGlobaux.Text).Convert();
+        }
+
+        private void Remplir()
+        {
+            var calculette = new Calculette(new FormuleGain(), _donneesSaisies);
+            var resultatCalcul = calculette.Calculer();
+
+            textBoxGainNet.Text = resultatCalcul.GainNet.ToString("#.##");
+            //textBoxCotisation.Text = resultatCalcul..ToString("#.##");
         }
     }
 }
