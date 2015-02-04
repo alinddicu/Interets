@@ -1,8 +1,8 @@
 ﻿namespace Interets.New.Logic
 {
-    public class ResultatCalcul
+    public class ResultatCalculette
     {
-        public ResultatCalcul(double gainBrut, double gainNet, double rendementGlobal, double cotisation)
+        public ResultatCalculette(double gainBrut, double gainNet, double rendementGlobal, double cotisation)
         {
             GainBrut = gainBrut;
             GainNet = gainNet;

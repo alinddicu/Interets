@@ -30,6 +30,8 @@
         {
             this._chart = new System.Windows.Forms.PictureBox();
             this.panelDataInput = new System.Windows.Forms.Panel();
+            this.textBoxGainBrut = new System.Windows.Forms.TextBox();
+            this.labelGainBrut = new System.Windows.Forms.Label();
             this.textBoxCotisation = new System.Windows.Forms.TextBox();
             this.labelCotisation = new System.Windows.Forms.Label();
             this.textBoxGainNet = new System.Windows.Forms.TextBox();
@@ -43,8 +45,6 @@
             this.labelPrimeMensuelle = new System.Windows.Forms.Label();
             this.textBoxTaux = new System.Windows.Forms.TextBox();
             this.labelTaux = new System.Windows.Forms.Label();
-            this.labelGainBrut = new System.Windows.Forms.Label();
-            this.textBoxGainBrut = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this._chart)).BeginInit();
             this.panelDataInput.SuspendLayout();
             this.SuspendLayout();
@@ -82,6 +82,23 @@
             this.panelDataInput.Name = "panelDataInput";
             this.panelDataInput.Size = new System.Drawing.Size(573, 99);
             this.panelDataInput.TabIndex = 1;
+            // 
+            // textBoxGainBrut
+            // 
+            this.textBoxGainBrut.Location = new System.Drawing.Point(455, 42);
+            this.textBoxGainBrut.Name = "textBoxGainBrut";
+            this.textBoxGainBrut.ReadOnly = true;
+            this.textBoxGainBrut.Size = new System.Drawing.Size(100, 20);
+            this.textBoxGainBrut.TabIndex = 14;
+            // 
+            // labelGainBrut
+            // 
+            this.labelGainBrut.AutoSize = true;
+            this.labelGainBrut.Location = new System.Drawing.Point(393, 45);
+            this.labelGainBrut.Name = "labelGainBrut";
+            this.labelGainBrut.Size = new System.Drawing.Size(50, 13);
+            this.labelGainBrut.TabIndex = 13;
+            this.labelGainBrut.Text = "Gain brut";
             // 
             // textBoxCotisation
             // 
@@ -140,7 +157,7 @@
             this.buttonCalculer.Name = "buttonCalculer";
             this.buttonCalculer.Size = new System.Drawing.Size(75, 23);
             this.buttonCalculer.TabIndex = 6;
-            this.buttonCalculer.Text = "TracerChart";
+            this.buttonCalculer.Text = "Tracer";
             this.buttonCalculer.UseVisualStyleBackColor = true;
             this.buttonCalculer.Click += new System.EventHandler(this.buttonCalculer_Click);
             // 
@@ -194,23 +211,6 @@
             this.labelTaux.Size = new System.Drawing.Size(49, 13);
             this.labelTaux.TabIndex = 0;
             this.labelTaux.Text = "Taux net";
-            // 
-            // labelGainBrut
-            // 
-            this.labelGainBrut.AutoSize = true;
-            this.labelGainBrut.Location = new System.Drawing.Point(393, 45);
-            this.labelGainBrut.Name = "labelGainBrut";
-            this.labelGainBrut.Size = new System.Drawing.Size(50, 13);
-            this.labelGainBrut.TabIndex = 13;
-            this.labelGainBrut.Text = "Gain brut";
-            // 
-            // textBoxGainBrut
-            // 
-            this.textBoxGainBrut.Location = new System.Drawing.Point(455, 42);
-            this.textBoxGainBrut.Name = "textBoxGainBrut";
-            this.textBoxGainBrut.ReadOnly = true;
-            this.textBoxGainBrut.Size = new System.Drawing.Size(100, 20);
-            this.textBoxGainBrut.TabIndex = 14;
             // 
             // ChartForm
             // 

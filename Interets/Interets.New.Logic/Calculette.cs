@@ -16,14 +16,14 @@
             _donneesSaisies = donneesSaisies;
         }
 
-        public ResultatCalcul Calculer()
+        public ResultatCalculette Calculer()
         {
             var gainBrut = GetGainBrut();
             var gainNet = gainBrut - _donneesSaisies.FraisGlobaux;
             var rendemmentGlobal = GetRendemmentGlobal(gainNet);
             var cotisation = _formuleCotisation.Calculer(_donneesSaisies.AnneesContrat * 12);
 
-            return new ResultatCalcul(gainBrut, gainNet, rendemmentGlobal, cotisation);
+            return new ResultatCalculette(gainBrut, gainNet, rendemmentGlobal, cotisation);
         }
 
         private double GetRendemmentGlobal(double gainNet)

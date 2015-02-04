@@ -27,25 +27,10 @@
             var formuleCotisation = new FormuleCotisation(_donneesSaisies);
             var cotisationData = new SuitePointsCotisationGenerator(formuleCotisation, _donneesSaisies).Generate().ToArray();
             var maxYCalc = new MaxYofPointsDonneesCalculator(gainNetData, cotisationData);
-            var graphiquesGenerator = new SuitePointsForChartConvertor(_chartParameters, maxYCalc);
+            var pointsForChartConvertor = new SuitePointsForChartConvertor(_chartParameters, maxYCalc);
 
-            var gainPoints = graphiquesGenerator.Convert(gainNetData);
-            var cotisationPoints = graphiquesGenerator.Convert(cotisationData);
-
-            _graphics.Clear(_chart.BackColor);
-            PrintPoints(gainPoints.ToArray(), new Pen(Color.Green));
-            PrintPoints(cotisationPoints.ToArray(), new Pen(Color.Blue));
-        }
-
-        private void PrintPoints(IList<Point> gainPoints, Pen pen)
-        {
-            var lastPoint = gainPoints[0];
-            for (var i = 1; i < gainPoints.Count(); i++)
-            {
-                var point = gainPoints[i];
-                _graphics.DrawLine(pen, lastPoint.X, lastPoint.Y, point.X, point.Y);
-                lastPoint = point;
-            }
+            var traceur = new Traceur(_graphics, pointsForChartConvertor, new Pen(Color.Green), new Pen(Color.Blue));
+            traceur.Trace(gainNetData, cotisationData);
         }
 
         private void buttonCalculer_Click(object sender, EventArgs e)
