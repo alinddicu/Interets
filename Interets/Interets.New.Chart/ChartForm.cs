@@ -18,7 +18,7 @@
             InitializeComponent();
 
             _graphics = _chart.CreateGraphics();
-            _chartParameters = new ChartParameters(_chart.Width, _chart.Height);
+            _chartParameters = new ChartParameters(_chart.Width, _chart.Height, 15, 15);
         }
 
         private void TracerChart()

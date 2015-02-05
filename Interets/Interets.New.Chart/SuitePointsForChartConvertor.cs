@@ -11,7 +11,7 @@
         private readonly MaxYofPointsDonneesCalculator _maxYofPointsDonneesCalculator;
 
         public SuitePointsForChartConvertor(
-            ChartParameters chartParams, 
+            ChartParameters chartParams,
             MaxYofPointsDonneesCalculator maxYofPointsDonneesCalculator)
         {
             _chartParams = chartParams;
@@ -25,20 +25,20 @@
 
             return
                 from pointDonnees in donnees.OrderBy(d => d.X)
-                let x = (int)(pointDonnees.X * xScaleFactor)
-                let y = _chartParams.PanelHeight - (int)(pointDonnees.Y * yScaleFactor)
+                let x = (int)(pointDonnees.X * xScaleFactor) + _chartParams.HorizontalMargin
+                let y = _chartParams.PanelHeight - _chartParams.VerticalMargin - (int)(pointDonnees.Y * yScaleFactor)
                 select new Point(x, y);
         }
 
         private double GetyScaleFactor()
         {
             var maxHeightOnY = _maxYofPointsDonneesCalculator.Calculate();
-            return _chartParams.PanelHeight / maxHeightOnY;
+            return (_chartParams.PanelHeight - 2 * _chartParams.VerticalMargin) / maxHeightOnY;
         }
 
         private double GetxScaleFactor(IEnumerable<PointDonnees> donnees)
         {
-            return _chartParams.PanelWidth / donnees.Max(d => d.X);
+            return (_chartParams.PanelWidth - 2 * _chartParams.HorizontalMargin) / donnees.Max(d => d.X);
         }
     }
 }

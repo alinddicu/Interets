@@ -2,12 +2,16 @@
 {
     public class ChartParameters
     {
-        public ChartParameters(int panelWidth, int panelHeight)
+        public ChartParameters(
+            int panelWidth, 
+            int panelHeight,
+            int horizontalMargin,
+            int verticalMargin)
         {
             PanelWidth = panelWidth;
             PanelHeight = panelHeight;
-            HorizontalMargin = 10;
-            VerticalMargin = 10;
+            HorizontalMargin = horizontalMargin;
+            VerticalMargin = verticalMargin;
         }
 
         public int PanelWidth { get; private set; }
