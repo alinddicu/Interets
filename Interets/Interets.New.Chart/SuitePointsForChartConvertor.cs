@@ -21,7 +21,7 @@
         public IEnumerable<Point> Convert(ICollection<PointDonnees> donnees)
         {
             var xScaleFactor = GetxScaleFactor(donnees);
-            var yScaleFactor = GetyScaleFactor(donnees);
+            var yScaleFactor = GetyScaleFactor();
 
             return
                 from pointDonnees in donnees.OrderBy(d => d.X)
@@ -30,11 +30,10 @@
                 select new Point(x, y);
         }
 
-        private double GetyScaleFactor(IEnumerable<PointDonnees> donnees)
+        private double GetyScaleFactor()
         {
-            var maxY = donnees.Max(d => d.Y);
             var maxHeightOnY = _maxYofPointsDonneesCalculator.Calculate();
-            return (_chartParams.PanelHeight / maxY) * (maxY / maxHeightOnY);
+            return _chartParams.PanelHeight / maxHeightOnY;
         }
 
         private double GetxScaleFactor(IEnumerable<PointDonnees> donnees)
