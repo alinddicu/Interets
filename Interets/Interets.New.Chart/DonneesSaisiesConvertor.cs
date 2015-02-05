@@ -25,7 +25,7 @@
 
         private double Convert(string saisie)
         {
-            var result = 0.0;
+            double result;
             if (!double.TryParse(saisie, out result))
             {
                 throw new FormatException("Donnée incorecte");

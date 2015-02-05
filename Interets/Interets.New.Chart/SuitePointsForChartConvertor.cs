@@ -1,8 +1,9 @@
-﻿namespace Interets.New.Logic
+﻿namespace Interets.New.Chart
 {
     using System.Collections.Generic;
     using System.Drawing;
     using System.Linq;
+    using Logic;
 
     public class SuitePointsForChartConvertor
     {
